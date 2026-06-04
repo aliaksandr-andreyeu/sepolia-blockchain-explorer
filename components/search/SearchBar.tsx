@@ -9,8 +9,8 @@ export function SearchBar() {
   const [query, setQuery] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
+  function handleSubmit(e?: FormEvent) {
+    e?.preventDefault();
     const result = parseSearchQuery(query);
 
     if (result.type === "invalid") {
@@ -23,9 +23,10 @@ export function SearchBar() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form data-testid="search-form" onSubmit={handleSubmit} className="w-full">
       <div className="flex overflow-hidden rounded-lg border border-white/20 bg-white shadow-sm">
         <input
+          data-testid="search-input"
           type="text"
           value={query}
           onChange={(e) => {
@@ -38,13 +39,21 @@ export function SearchBar() {
           autoComplete="off"
         />
         <button
+          data-testid="search-submit"
           type="submit"
           className="bg-explorer-coral px-5 text-sm font-medium text-white transition-colors hover:bg-explorer-rose"
         >
           Search
         </button>
       </div>
-      {error && <p className="mt-1.5 text-xs text-explorer-peach">{error}</p>}
+      {error && (
+        <p
+          data-testid="search-error"
+          className="mt-1.5 text-xs text-explorer-peach"
+        >
+          {error}
+        </p>
+      )}
     </form>
   );
 }

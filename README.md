@@ -68,9 +68,11 @@ Covers `lib/search`, `lib/shared/format`, `lib/block/summary`, and `SearchBar` n
 **E2E** - [Playwright](https://playwright.dev) (starts dev server automatically):
 
 ```bash
-npx playwright install chromium   # first time only
+npm run test:e2e:install   # first time only (downloads Chromium)
 npm run test:e2e
 ```
+
+Run unit + E2E together: `npm run test:all`
 
 E2E works without `ALCHEMY_API_KEY` (navigation + validation). With a key, block pages load live data.
 

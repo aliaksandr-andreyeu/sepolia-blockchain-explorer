@@ -7,7 +7,7 @@ test.describe("Home page", () => {
     await expect(
       page.getByRole("heading", { name: "Sepolia Blockchain Explorer" }),
     ).toBeVisible();
-    await expect(page.getByPlaceholderText(/Search by Address/i)).toBeVisible();
+    await expect(page.getByTestId("search-input")).toBeVisible();
     await expect(page.getByRole("link", { name: "SepoliaScan" })).toBeVisible();
   });
 
